@@ -1,3 +1,7 @@
+LINK DO VÍDEO https://www.youtube.com/watch?v=uAPlrZMO6KA
+
+
+
 # Alocador de Memória Buddy Binário
 
 Implementação de um alocador de memória dinâmica usando o algoritmo Buddy Binário para gerenciar uma memória principal de 4 MB.
@@ -107,3 +111,5 @@ Memoria Total: 4 MB
 - `Program.java`: classe simples para representar um programa
 - `programas.txt`: arquivo de exemplo com 20 programas
 - `README.md`: este arquivo
+
+
