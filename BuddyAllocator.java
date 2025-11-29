@@ -15,11 +15,16 @@ public class BuddyAllocator {
 
     public BuddyAllocator() {
         int maxBlocks = MEMORY_SIZE / MIN_BLOCK_SIZE;
+        //Tamanho de cada bloco
         blockSizes = new int[maxBlocks];
+        //0 livre 1 ocupado
         blockStatus = new int[maxBlocks];
+        //Programa no bloco
         blockLabels = new String[maxBlocks];
+        //Tamanho real do programa
         programSizes = new int[maxBlocks];
         totalBlocks = maxBlocks;
+        //Numero atual de blocos
         blockCount = 0;
         blockSizes[0] = MEMORY_SIZE;
         blockStatus[0] = 0;
@@ -29,7 +34,7 @@ public class BuddyAllocator {
     }
 
 
-
+    //Faz a divisao na memoria para ficar o menor possivel
     private int nextPowerOf2(int size) {
         int power = MIN_BLOCK_SIZE;
         while (power < size) {
@@ -39,7 +44,7 @@ public class BuddyAllocator {
     }
 
 
-
+    //Procura o menor bloco livre
     private int findFreeBlock(int requiredSize) {
         int bestIndex = -1;
         int bestSize = -1;
@@ -55,7 +60,7 @@ public class BuddyAllocator {
     }
 
 
-
+    //Divide um bloco grande em dois blocos menores
     private void splitBlock(int index, int targetSize) {
         while (blockSizes[index] > targetSize) {
             int currentSize = blockSizes[index];
@@ -76,7 +81,7 @@ public class BuddyAllocator {
     }
 
 
-
+    //Alocacao, aqui onde ele faz o processo completo
     public boolean allocate(String label, int sizeInKB) {
         int sizeInBytes = sizeInKB * 1024;
         if (sizeInBytes > MEMORY_SIZE) {
@@ -95,7 +100,7 @@ public class BuddyAllocator {
     }
 
 
-
+    //mostra o status da memoria
     public void printMemoryStatus() {
         int totalFree = 0;
         int fragmentCount = 0;
